@@ -1,0 +1,86 @@
+*:not(popover) {
+  all: unset;
+}
+
+@import '../../../.config/waybar/theme.css';
+
+widget {
+  border-radius: 13px;
+  -gtk-outline-radius: 13px;
+}
+
+.overview-window {
+  margin-top: 44px;
+}
+
+.overview-tasks {
+  border-radius: 15px;
+  -gtk-outline-radius: 27px;
+  border-top: 1px solid @main-fg;
+  border-left: 1px solid @main-fg;
+  border-right: 1px solid @main-fg;
+  border-bottom: 1px solid @main-fg;
+  margin: 0px;
+  background-color: alpha(@bar-bg, 0.85);
+  color: @bar-fg;
+}
+
+.overview-tasks-workspace {
+  border-radius: 19px;
+  margin: 10px;
+  background-color: alpha(@bar-bg, 0.5);
+  border: 1px solid alpha(@main-fg, 0.1);
+}
+
+.overview-tasks-workspace-number {
+  font-family: "Open Sans", "Noto Sans", sans-serif;
+  color: @wb-act-fg;
+  text-shadow: 0 0 5px @main-fg, 0 0 10px @main-fg, 0 0 15px @main-fg;
+  transition: text-shadow 0.3s ease;
+}
+
+.overview-tasks-window {
+  border-radius: 16px;
+  transition: 300ms cubic-bezier(0.1, 1, 0, 1);
+  background-color: alpha(@main-fg, 0.1);
+  color: @main-fg;  
+  outline: none;
+}
+
+.overview-tasks-window:hover,
+.overview-tasks-window:focus {
+  background-color: alpha(@wb-act-fg, 0.2);
+  color: @wb-hvr-fg;
+  box-shadow: 0 0 5px 2px alpha(@wb-act-fg, 0.6);
+  outline: none;
+}
+
+.overview-tasks-window:active {
+  background-color: alpha(@wb-hvr-bg, 0.8);
+  color: @wb-act-fg;
+}
+
+.overview-tasks-window-selected {
+  background-color: alpha(@main-bg, 0.5);
+}
+
+.overview-tasks-window-dragging {
+  opacity: 0.9;
+}
+
+.growingRadial {
+  transition: 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.fadingRadial {
+  transition: 50ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sidebar-pinned {
+  margin: 0px;
+  border-radius: 0px;
+  border-bottom-right-radius: 27px;
+  border: 0px solid;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,202 @@
+{ 
+  "group/info": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/arrow-right","custom/updates", "custom/spotify"], //meow meow meow meow meow meow meow
+  },
+
+  "custom/cpuinfo": {
+    "exec": " cpuinfo.sh",
+    "return-type": "json",
+    "format": " - {}",
+    "interval": 10, // once every 10 seconds
+    "tooltip": true,
+    "max-length": 1000
+},
+
+  "custom/fanmode": {
+    "format": "{}",
+    "exec": "fanspeed.sh ; echo fan mode",
+    "on-click": "kitty -e temp.sh",
+    "on-click-right": "sleep 0.1 && cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && cliphist.sh w",
+    "interval" : 120,
+},
+
+  "custom/updates": {
+    "exec": "systemupdate.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "signal": 20,
+},
+
+  "custom/arrow-right": {
+    "format": "󰁙",
+    "tooltip": false,
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+"disable-scroll": false,
+    "on-click": "activate",
+    "all-outputs": true,
+    "format-icons": {
+                        "urgent": "",
+                        "active": "",
+                        "default": ""
+  },
+        "persistent-workspaces": {
+	        "*": 3
+	}
+  
+},
+
+"pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "婢",
+    "on-click": "pavucontrol -t 3",
+    "on-click-right": "volumecontrol.sh -s ''",
+    "on-click-middle": "volumecontrol.sh -o m",
+    "on-scroll-up": "/home/rookie/.local/share/bin/changevolume up",
+    "on-scroll-down": "/home/rookie/.local/share/bin/changevolume down",
+    "tooltip-format": "{icon} {desc} // {volume}%",
+    "scroll-step": 5,
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+    }
+},
+
+  "group/hub": {
+    "orientation": "inherit",
+    "modules": ["group/utils","pulseaudio"],
+  },
+  "group/utils": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 200,
+      "transition-left-to-right": true,
+    },
+    "modules": ["custom/arrow-left","idle_inhibitor","tray"], //meow meow meow meow meow meow meow meow meow meow meow meow
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " 󰫢 // ",
+        "deactivated": " 󰫣 // "
+    }
+},
+  "custom/arrow-left": {
+    "format": "󰁒",
+    "tooltip": false,
+  },
+  "custom/notifications": {
+    "tooltip": false,
+    "format": "{icon} {}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%A %d.%m}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  "tray": {
+    "format": "{} ",
+    "icon-size": 16,
+    "spacing": 9
+},
+"group/power": {
+  "orientation": "inherit",
+  "drawer": {
+    "transition-duration": 300,
+    "transition-left-to-right": true,
+  },
+  "modules": ["battery"],
+},
+"battery": {
+  "states": {
+    "good": 95,
+    "warning": 30,
+    "critical": 15
+  },
+  "format": "{icon} {capacity}%",
+  "format-charging": "<b>󰂄 {capacity}%</b>",
+  "format-full": "<b>󰁹</b>",
+  "format-icons": [
+    "󰁻",
+    "󰁼",
+    "󰁾",
+    "󰂀",
+    "󰂂",
+    "󰁹"
+  ],
+  "tooltip-format": "{timeTo} | {capacity} % | {power} W"
+},
+"custom/power": {
+  "format": "{}",
+  "exec": "echo ; echo  logout",
+  "on-click": "logoutlaunch.sh 2",
+  "on-click-right": "logoutlaunch.sh 1",
+  "interval" : 86400, // once every day
+  "tooltip": true
+},
+
+"custom/spotify": {
+  "exec": "~/.local/share/bin/mediaplayer.py --player spotify",
+  "format": " {}",
+  "return-type": "json",
+  "on-click": "playerctl play-pause --player spotify",
+  "on-click-right": "playerctl next --player spotify",
+  "on-click-middle": "playerctl previous --player spotify",
+  "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -p spotify i",
+  "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -p spotify d",
+  "max-length": 100,
+  "escape": true,
+  "tooltip": true
+  }
+
+}

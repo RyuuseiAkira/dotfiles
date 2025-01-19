@@ -1,0 +1,14 @@
+    "custom/spotify": {
+        "exec": "~/.local/share/bin/mediaplayer.py --player spotify",
+        "format": "{}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause --player spotify",
+        "on-click-right": "playerctl next --player spotify",
+        "on-click-middle": "playerctl previous --player spotify",
+        "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -p spotify i",
+        "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -p spotify d",
+        "max-length": 25,
+        "escape": true,
+        "tooltip": true
+    },
+
