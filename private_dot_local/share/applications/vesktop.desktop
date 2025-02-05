@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Vesktop (fix)
+Icon=vesktop
+Comment=Another Discord client
+Type=Application
+Exec=vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
+Terminal=false;

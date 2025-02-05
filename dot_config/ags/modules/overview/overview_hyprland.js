@@ -194,8 +194,8 @@ export default () => {
             className: 'overview-tasks-workspace',
             vpack: 'center',
             css: `
-                min-width: ${SCREEN_WIDTH * userOptions.overview.scale-99}px;
-                min-height: ${SCREEN_HEIGHT * userOptions.overview.scale-61}px;
+                min-width: ${SCREEN_WIDTH * userOptions.overview.scale-74}px;
+                min-height: ${SCREEN_HEIGHT * userOptions.overview.scale-47}px;
             `,
             children: [Widget.EventBox({
                 hexpand: true,

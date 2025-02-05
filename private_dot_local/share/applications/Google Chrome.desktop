@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Chrome (F)
+Icon=google-chrome
+Comment=Google Chrome
+Type=Application
+Exec=google-chrome-stable --enable-wayland-ime -–ozone-platform-hint=auto --enable-features=TouchpadOverscrollHistoryNavigation
+Terminal=false;
