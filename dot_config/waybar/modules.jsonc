@@ -5,7 +5,7 @@
       "transition-duration": 300,
       "transition-left-to-right": false,
     },
-    "modules": ["custom/arrow-right","custom/updates", "custom/spotify"], //meow meow meow meow meow meow meow
+    "modules": ["custom/arrow-right","custom/fanmode","custom/updates", "custom/spotify"], //meow meow meow meow meow meow meow
   },
 
   "custom/cpuinfo": {
@@ -20,7 +20,7 @@
   "custom/fanmode": {
     "format": "{}",
     "exec": "fanspeed.sh ; echo fan mode",
-    "on-click": "kitty -e temp.sh",
+    "on-click": "kitty -e --hold bash -c 'sudo /home/akira/.local/share/bin/toggle_turbo.sh'",
     "on-click-right": "sleep 0.1 && cliphist.sh d",
     "on-click-middle": "sleep 0.1 && cliphist.sh w",
     "interval" : 120,
@@ -43,7 +43,7 @@
 
   "hyprland/workspaces": {
     "format": "{icon}",
-"disable-scroll": false,
+    "disable-scroll": false,
     "on-click": "activate",
     "all-outputs": true,
     "format-icons": {
