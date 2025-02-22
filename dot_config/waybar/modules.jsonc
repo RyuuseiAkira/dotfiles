@@ -2,10 +2,10 @@
   "group/info": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 300,
-      "transition-left-to-right": false,
+      "transition-duration": 500,
+      "transition-left-to-right": false
     },
-    "modules": ["custom/arrow-right","custom/fanmode","custom/updates", "custom/spotify"], //meow meow meow meow meow meow meow
+    "modules": ["custom/arrow-right","custom/pomobar","custom/updates","mpris","custom/spotify"] //meow meow meow meow meow meow meow
   },
 
   "custom/cpuinfo": {
@@ -20,10 +20,10 @@
   "custom/fanmode": {
     "format": "{}",
     "exec": "fanspeed.sh ; echo fan mode",
-    "on-click": "kitty -e --hold bash -c 'sudo /home/akira/.local/share/bin/toggle_turbo.sh'",
+    "on-click": "kitty -e /home/akira/.local/share/bin/temp.sh",
     "on-click-right": "sleep 0.1 && cliphist.sh d",
     "on-click-middle": "sleep 0.1 && cliphist.sh w",
-    "interval" : 120,
+    "interval" : 100
 },
 
   "custom/updates": {
@@ -33,12 +33,12 @@
     "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
     "interval": 86400, // once every day
     "tooltip": true,
-    "signal": 20,
+    "signal": 20
 },
 
   "custom/arrow-right": {
-    "format": "󰁙",
-    "tooltip": false,
+    "format": "",
+    "tooltip": false
   },
 
   "hyprland/workspaces": {
@@ -48,7 +48,7 @@
     "all-outputs": true,
     "format-icons": {
                         "urgent": "",
-                        "active": "",
+                        "active": "", // 
                         "default": ""
   },
         "persistent-workspaces": {
@@ -58,13 +58,13 @@
 },
 
 "pulseaudio": {
-    "format": "{icon} {volume}",
-    "format-muted": "婢",
+    "format": "{icon} {volume}%",
+    "format-muted": "<big>󰝟</big>",
     "on-click": "pavucontrol -t 3",
     "on-click-right": "volumecontrol.sh -s ''",
     "on-click-middle": "volumecontrol.sh -o m",
-    "on-scroll-up": "/home/rookie/.local/share/bin/changevolume up",
-    "on-scroll-down": "/home/rookie/.local/share/bin/changevolume down",
+    "on-scroll-up": "volumecontrol.sh -o i",
+    "on-scroll-down": "volumecontrol.sh -o d",
     "tooltip-format": "{icon} {desc} // {volume}%",
     "scroll-step": 5,
     "format-icons": {
@@ -80,26 +80,29 @@
 
   "group/hub": {
     "orientation": "inherit",
-    "modules": ["group/utils","pulseaudio"],
+    "modules": ["group/utils","privacy","pulseaudio"] //meow meow meow meow meow meow meow meow
   },
   "group/utils": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 200,
-      "transition-left-to-right": true,
+      "transition-duration": 500,
+      "transition-left-to-right": true
     },
-    "modules": ["custom/arrow-left","idle_inhibitor","tray"], //meow meow meow meow meow meow meow meow meow meow meow meow
+    "modules": ["custom/arrow-left","custom/fanmode","custom/spacing3","power-profiles-daemon","custom/spacing3","idle_inhibitor","custom/spacing2","tray","custom/spacing2"] //meow meow meow meow meow meow meow meow meow meow meow meow
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-        "activated": " 󰫢 // ",
-        "deactivated": " 󰫣 // "
-    }
+        "activated": "󰫢",
+        "deactivated": "󰫣"
+    },
+    "on-click-right": "kblightcycle.sh i", //increase kb backlight
+    "on-scroll-up": "brightnesscontrol.sh i 5", 
+    "on-scroll-down": "brightnesscontrol.sh d 5"
 },
   "custom/arrow-left": {
-    "format": "󰁒",
-    "tooltip": false,
+    "format": "",
+    "tooltip": false
   },
   "custom/notifications": {
     "tooltip": false,
@@ -134,28 +137,28 @@
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
 
   "tray": {
     "format": "{} ",
-    "icon-size": 16,
+    "icon-size": 15,
     "spacing": 9
 },
 "group/power": {
   "orientation": "inherit",
   "drawer": {
-    "transition-duration": 300,
-    "transition-left-to-right": true,
+    "transition-duration": 500,
+    "transition-left-to-right": true
   },
-  "modules": ["battery"],
+  "modules": ["battery"]
 },
 "battery": {
   "states": {
@@ -184,7 +187,6 @@
   "interval" : 86400, // once every day
   "tooltip": true
 },
-
 "custom/spotify": {
   "exec": "~/.local/share/bin/mediaplayer.py --player spotify",
   "format": " {}",
@@ -197,6 +199,101 @@
   "max-length": 100,
   "escape": true,
   "tooltip": true
+  },
+"mpris": {
+    "format": "{player_icon} {artist} - <b>{title}</b>",
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "player-icons": { 
+        "default": "󰎇",
+        "mpv": "🎵",
+        "Lollypop": ""
+    },
+    "status-icons": {
+        "paused": "▶"
+    },
+    "ignored-players": ["spotify"],
+    "max-length": 1000,
+    "interval": 1
+},
+"pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
+    "on-click": "pavucontrol -t 4",
+    "on-click-middle": "volumecontrol.sh -i m",
+    "on-scroll-up": "volumecontrol.sh -i i",
+    "on-scroll-down": "volumecontrol.sh -i d",
+    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+    "scroll-step": 5
+},
+"privacy": {
+  "icon-size": 9,
+  "icon-spacing": 6,
+  "transition-duration": 250,
+  "modules": [
+      {
+          "type": "screenshare",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+      },
+      {
+          "type": "audio-in",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+      }
+  ]
+},
+"power-profiles-daemon": {
+  "format": "{icon}",
+  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": "",
+    "power-saver": ""
   }
-
+},
+"network": {
+  "tooltip": true,
+  "format-wifi": " {essid}",
+  "format-ethernet": "󰈁",
+  "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+  "format-linked": "󰈁 {ifname} (No IP)",
+  "format-disconnected": "󰖪 ",
+  "tooltip-format-disconnected": "Disconnected",
+  "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+  "interval": 2
+},
+  "custom/pomobar": {
+    "format": "{} {icon}",
+    "format-icons": {
+      "idle": "",
+      "paused": "",
+      "work": "",
+      "short_break": "",
+      "long_break": ""
+    },
+    "interval": 1,
+    "exec": "${HOME}/.config/waybar/pomobar-cli status",
+    "on-click": "${HOME}/.config/waybar/pomobar-cli toggle",
+    "on-click-middle": "${HOME}/.config/waybar/pomobar-cli reset",
+    "return-type": "json"
+},
+"custom/spacing": {
+  "format": " ",
+  "tooltip": false
+},
+"custom/spacing1": {
+  "format": " / ",
+  "tooltip": false
+},
+"custom/spacing2": {
+  "format": " // ",
+  "tooltip": false
+},
+"custom/spacing3": {
+  "format": " - ",
+  "tooltip": false
+}
 }

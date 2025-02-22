@@ -8,17 +8,18 @@ reset='\033[0m'  # Reset color
 
 # Get temp
 cputemp=$(cpuinfo.sh | jq -r '.text')
-gputemp=$(gpuinfo.sh --use amd | jq -r '.text')
+gputemp=$(gpuinfo.sh --use amd | jq -r '.text' | grep -oP '\d+°C')
 
 #temp
 echo "┌─Temperatures─────┐"
 echo
 echo -e "${red}    Cpu:${reset} $cputemp" 
-echo -e "${green}    Gpu:${reset} $gputemp"
+echo -e "${green}    Gpu:${reset}  $gputemp"
 echo
 echo "└──────────────────┘"
 echo "  ˚. ✦.˳·˖✶ ⋆.✧˚."
 echo
+
 # Check cooler boost state
 current_state=$(cat "$cooler_boost_file")
 
