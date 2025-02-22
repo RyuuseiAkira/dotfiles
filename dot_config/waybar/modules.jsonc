@@ -19,10 +19,12 @@
 
   "custom/fanmode": {
     "format": "{}",
-    "exec": "fanspeed.sh ; echo fan mode",
-    "on-click": "kitty -e /home/akira/.local/share/bin/temp.sh",
-    "on-click-right": "sleep 0.1 && cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && cliphist.sh w",
+    "exec": "fanspeed.sh",
+    "on-click": "foot -e temp.sh",
+    "on-click-right": "fanspeed.sh",
+    //"on-click-middle": "fanspeed.sh",
+    "tooltip": true,
+    "tooltip-format": "Turbo fan:{}",
     "interval" : 100
 },
 
