@@ -1,0 +1,72 @@
+body.wallbash {
+  --text-default: #FFFFFF;
+  --text-secondary: #FFFFFF;
+  --text-tertiary: #2C2952;
+
+  --background: #1C1B2A;
+  --background-darker: #1C1B2A;
+  --background-lighter: #292A52;
+  --body-background: #1C1B2A;
+  --gradient-body-background: #1C1B2A;
+  --input-background: #292A52;
+  --controller-hints-background: transparent;
+  --current-background: #1C1B2A;
+  --modal-background: #2C2952;
+  --modal-border: #7A7DC2;
+  --osk-background: #1C1B2A;
+  --osk-button-background: #292A52;
+  --osk-button-border: #2C2952;
+  --search-bar-background: #292A52;
+  --search-bar-border: #292A52;
+
+  --action-icon: #FFFFFF;
+  --action-icon-hover: #0C0C0C;
+  --action-icon-active: #7A7DC2;
+  --icons-background: #1C1B2A;
+
+  --brand-primary: #7A7DC2;
+  --brand-primary-hover: #0C0C0C;
+
+  --primary-button: #7A7DC2;
+  --primary-button-overlay: #7A7DC2;
+  --secondary-button: #7A7DC2;
+  --secondary-button-overlay: #7A7DC2;
+  --tertiary-button: #7A7DC2;
+  --tertiary-button-overlay: #7A7DC2;
+  --success-button: #9A9AE6;
+  --disabled-button: #1C1B2A;
+  --disabled-button-overlay: #2C2952;
+
+  --navbar-active: #7A7DC2;
+  --navbar-inactive: #FFFFFF;
+  --navbar-active-background: #292A52;
+  --navbar-accent: #7A7DC2;
+  --navbar-background: #1C1B2A;
+  --divider: #1C1B2A;
+
+  --success: #9A9AE6;
+  --success-hover: #0C0C0C;
+  --danger: #A09AE6;
+  --danger-hover: #0C0C0C;
+
+  --primary: #7A7DC2;
+  --secondary: #7A7DC2;
+  --accent: #7A7DC2;
+
+  --status-success: #9A9AE6;
+  --status-warning: #A09AE6;
+  --status-danger: #A09AE6;
+  --status-info: #7A7DC2;
+
+  --neutral-01: #2C2952;
+  --neutral-02: #1C1B2A;
+  --neutral-03: #292A52;
+  --neutral-04: #0C0C0C;
+  --neutral-05: #D0CCFF;
+  --neutral-06: #FFFFFF;
+}
+
+body.wallbash select,
+body.wallbash input {
+  box-shadow: none !important;
+}

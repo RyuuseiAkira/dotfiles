@@ -5,27 +5,27 @@
       "transition-duration": 500,
       "transition-left-to-right": false
     },
-    "modules": ["custom/arrow-right","custom/pomobar","custom/updates","mpris","custom/spotify"] //meow meow meow meow meow meow meow
+    "modules": ["custom/arrow-right","custom/updates","mpris"] //meow meow meow meow meow meow meow
   },
 
   "custom/cpuinfo": {
     "exec": " cpuinfo.sh",
     "return-type": "json",
     "format": " - {}",
-    "interval": 10, // once every 10 seconds
+    "interval": 30, // once every 10 seconds
     "tooltip": true,
     "max-length": 1000
 },
 
   "custom/fanmode": {
     "format": "{}",
-    "exec": "fanspeed.sh",
+    "exec": "fanspeed.sh && tempcheck.sh",
     "on-click": "foot -e temp.sh",
-    "on-click-right": "fanspeed.sh",
-    //"on-click-middle": "fanspeed.sh",
+    //"on-click-right": "fanspeed.sh",
+    //"on-click-middle": "tempcheck.sh",
     "tooltip": true,
     "tooltip-format": "Turbo fan:{}",
-    "interval" : 100
+    "interval" : 30
 },
 
   "custom/updates": {
@@ -205,17 +205,20 @@
 "mpris": {
     "format": "{player_icon} {artist} - <b>{title}</b>",
     "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "tooltip": "true",
+    "tooltip-format": "{artist} - {title}",
     "player-icons": { 
         "default": "󰎇",
         "mpv": "🎵",
-        "Lollypop": ""
+        "Lollypop": "",
+        "spotify": ""
     },
     "status-icons": {
         "paused": "▶"
     },
-    "ignored-players": ["spotify"],
+    //"ignored-players": ["spotify"],
     "max-length": 1000,
-    "interval": 1
+    "interval": 2
 },
 "pulseaudio#microphone": {
     "format": "{format_source}",
