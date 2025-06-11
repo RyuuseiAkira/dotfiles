@@ -1,0 +1,68 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "/home/akira/.config/fastfetch/ascii/butterfly.txt", // $(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/\" -name \"*.png\" | sort -R | head -1)
+        "height": 18
+    },
+    "display": {
+        "separator": " : "
+    },
+    "modules": [
+      {
+        "type": "title",
+        "key": "  "
+      },
+      {
+        "type": "custom",
+        "format": "   "
+      },
+      {
+        "type": "os",
+        "key": "   OS",
+        "keyColor": "red"
+      },
+      {
+        "type": "wm",
+        "key": "  󱩛 WM",
+        "keyColor": "yellow"
+      },
+      {
+        "type": "terminal",
+        "key": "   Terminal",
+        "keyColor": "yellow"
+      },
+      {
+        "type": "cpu",
+        "format": "{1}",
+        "key": "   CPU",
+        "keyColor": "blue"
+      },
+      {
+        "type": "gpu",
+        "format": "{3}",
+        "key": "   GPU Driver",
+        "keyColor": "magenta"
+      },
+      {
+        "type": "memory",
+        "key": "  󰍛 Memory",
+        "keyColor": "magenta"
+      },
+      {
+        "type": "command",
+        "key": "  󱦟 OS Age ",
+        "keyColor": "31",
+        "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    {
+        "type": "uptime",
+        "key": "  󱫐 Uptime ",
+        "keyColor": "red"
+    },
+      {
+        "type": "colors",
+        "paddingLeft": 2,
+        "symbol": "circle"
+      }
+    ]
+}
